@@ -7,7 +7,8 @@ from math import floor
 app = Flask(__name__)
 
 # Load the CSV file
-GOAT_DATA_PATH = 'C:/GoatWeightEstimation/data/goats_features.csv'
+GOAT_DATA_PATH = 'data/goats_features.csv'
+
 goat_data = pd.read_csv(GOAT_DATA_PATH)
 
 # Ensure 'Animal No.' is treated as a string and strip any extra spaces
@@ -15,12 +16,12 @@ goat_data['Animal No.'] = goat_data['Animal No.'].astype(str).str.strip()
 
 # Preprocessor paths for each model
 PREPROCESSOR_PATHS = {
-    'XGBoost': 'C:/GoatWeightEstimation/model/preprocessor_xgb_regressor.pth',
-    'Random Forest': 'C:/GoatWeightEstimation/model/preprocessor_random_forest.pth',
-    'CatBoost': 'C:/GoatWeightEstimation/model/preprocessor_catboost.pth',
-    'Gradient Boosting': 'C:/GoatWeightEstimation/model/preprocessor_gbr.pth',
-    'AdaBoost': 'C:/GoatWeightEstimation/model/preprocessor_adaboost.pth',
-    'Support Vector Regressor': 'C:/GoatWeightEstimation/model/preprocessor_svr.pth',
+    'XGBoost': 'model/preprocessor_xgb_regressor.pth',
+    'Random Forest': 'model/preprocessor_random_forest.pth',
+    'CatBoost': 'model/preprocessor_catboost.pth',
+    'Gradient Boosting': 'model/preprocessor_gbr.pth',
+    'AdaBoost': 'model/preprocessor_adaboost.pth',
+    'Support Vector Regressor': 'model/preprocessor_svr.pth',
 }
 
 # Load preprocessors for each model
@@ -28,12 +29,12 @@ preprocessors = {key: load(path) for key, path in PREPROCESSOR_PATHS.items()}
 
 # Model paths
 MODEL_PATHS = {
-    'XGBoost': 'C:/GoatWeightEstimation/model/xgboost.pth',
-    'Random Forest': 'C:/GoatWeightEstimation/model/random_forest.pth',
-    'CatBoost': 'C:/GoatWeightEstimation/model/catboost.pth',
-    'Gradient Boosting': 'C:/GoatWeightEstimation/model/gbr.pth',
-    'AdaBoost': 'C:/GoatWeightEstimation/model/adaboost.pth',
-    'Support Vector Regressor': 'C:/GoatWeightEstimation/model/svr.pth',
+    'XGBoost': 'model/xgboost.pth',
+    'Random Forest': 'model/random_forest.pth',
+    'CatBoost': 'model/catboost.pth',
+    'Gradient Boosting': 'model/gbr.pth',
+    'AdaBoost': 'model/adaboost.pth',
+    'Support Vector Regressor': 'model/svr.pth',
 }
 
 # Load models for each regression technique
